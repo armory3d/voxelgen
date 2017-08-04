@@ -1,0 +1,120 @@
+{
+    "name": "Scene",
+    "renderpath_datas": [
+        {
+            "name": "simple_path",
+            "render_targets": [
+                {
+                    "name": "voxels",
+                    "width": 64,
+                    "height": 64,
+                    "depth": 64,
+                    "format": "RGBA32",
+                    "is_image": true
+                }
+            ],
+            "stages": [
+                {
+                    "command": "call_function",
+                    "params": ["Main.begin"]
+                },
+                {
+                    "command": "set_target",
+                    "params": [
+                        "1.0", "voxels"
+                    ]
+                },
+                {
+                    "command": "set_viewport",
+                    "params": [
+                        "64", "64"
+                    ]
+                },
+                {
+                    "command": "clear_image",
+                    "params": [
+                        "voxels"
+                    ]
+                },
+                {
+                    "command": "draw_meshes",
+                    "params": [
+                        "voxel"
+                    ]
+                },
+                {
+                    "command": "call_function",
+                    "params": ["Main.end"]
+                }
+            ]
+        }
+    ],
+    "shader_datas": [
+        {
+            "contexts": [
+                {
+                    "name": "voxgen",
+                    "compare_mode": "always",
+                    "constants": [],
+                    "cull_mode": "none",
+                    "depth_write": false,
+                    "color_write_red": false,
+                    "color_write_green": false,
+                    "color_write_blue": false,
+                    "color_write_alpha": false,
+                    "fragment_shader": "voxgen.frag",
+                    "vertex_shader": "voxgen.vert",
+                    "geometry_shader": "voxgen.geom",
+                    "texture_units": [
+                        {
+                            "name": "basecolor",
+                            "link": "_basecolor"
+                        }
+                    ],
+                    "vertex_structure": [
+                        {
+                            "name": "pos",
+                            "size": 3
+                        },
+                        {
+                            "name": "nor",
+                            "size": 3
+                        },
+                        {
+                            "name": "tex",
+                            "size": 2
+                        }
+                    ]
+                }
+            ],
+            "name": "voxgen"
+        }
+    ],
+    "camera_datas": [
+        {
+            "name": "CameraData",
+            "type": "perspective",
+            "near_plane": 0.1,
+            "far_plane": 100.0,
+            "fov": 0.85,
+            "render_path": "simple_path"
+        }
+    ],
+    "camera_ref": "Camera",
+    "lamp_datas": [],
+    "objects": [
+        {
+            "name": "Camera",
+            "type": "camera_object",
+            "data_ref": "CameraData",
+            "transform": {
+                "values": [
+                    0.6859206557273865,-0.32401347160339355,0.6515582203865051,7.481131553649902,
+                    0.7276763319969177,0.305420845746994,-0.6141703724861145,-6.5076398849487305,
+                    0.0,0.8953956365585327,0.44527140259742737,5.34366512298584,
+                    0.0,0.0,0.0,1.0
+                ]
+            }
+        }
+    ]
+}

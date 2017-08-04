@@ -1,0 +1,6 @@
+[submodule "Kha"]
+	path = Kha
+	url = https://github.com/Kode/Kha
+[submodule "Libraries/iron"]
+	path = Libraries/iron
+	url = https://github.com/armory3d/iron
